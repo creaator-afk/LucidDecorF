@@ -1,4 +1,4 @@
-package com.frontend.luciddecorf;
+package com.backend.luciddecorf;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
