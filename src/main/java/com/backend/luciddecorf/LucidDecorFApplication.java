@@ -1,4 +1,4 @@
-package com.frontend.luciddecorf;
+package com.backend.luciddecorf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

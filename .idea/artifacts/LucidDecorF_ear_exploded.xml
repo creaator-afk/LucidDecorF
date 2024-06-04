@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="LucidDecorF:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/LucidDecorF_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="LucidDecorF/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
