@@ -3,8 +3,8 @@ package com.backend.luciddecorf.service;
 import com.backend.luciddecorf.exceptions.ProductNotFoundException;
 import com.backend.luciddecorf.model.Category;
 import com.backend.luciddecorf.model.Product;
-import com.backend.luciddecorf.respositories.CategoryRepository;
-import com.backend.luciddecorf.respositories.ProductRepository;
+import com.backend.luciddecorf.repositories.CategoryRepository;
+import com.backend.luciddecorf.repositories.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,12 +12,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("selfProductService")
 public class SelfProductService implements ProductService{
 
     private static final Logger log = LoggerFactory.getLogger(SelfProductService.class);
-    private ProductRepository productRepository;
-    private CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
+
+    public SelfProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
+        this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
+    }
 
     @Override
     public Product getSingleProduct(long productId) throws ProductNotFoundException{
@@ -28,9 +33,10 @@ public class SelfProductService implements ProductService{
         throw new ProductNotFoundException("Product not found");
     }
 
+
     @Override
     public List<Product> getAllProducts() {
-        return List.of();
+        return productRepository.findAll();
     }
 
     @Override
@@ -47,7 +53,6 @@ public class SelfProductService implements ProductService{
                 product.setCategory(cat);
             }response = productRepository.save(product);
         }catch (Exception e) {
-            e.printStackTrace();
             throw new ProductNotFoundException("Product not found");
         }
         return response;

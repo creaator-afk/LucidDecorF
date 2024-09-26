@@ -1,4 +1,4 @@
-package com.backend.luciddecorf.respositories;
+package com.backend.luciddecorf.repositories;
 
 import com.backend.luciddecorf.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

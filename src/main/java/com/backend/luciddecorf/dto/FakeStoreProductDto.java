@@ -39,5 +39,4 @@ public class FakeStoreProductDto {
                 ", image='" + image + '\'' +
                 '}';
     }
-
 }
