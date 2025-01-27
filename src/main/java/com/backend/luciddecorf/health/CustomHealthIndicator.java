@@ -13,7 +13,7 @@ public class CustomHealthIndicator implements HealthIndicator {
         if (isHealthy) {
             return Health.up().build();
         }else {
-            return Health.up().withDetail("Error", "Lucid Decor F service is down").build();
+            return Health.up().withDetail("Error", "Lucid Decor service is down").build();
         }
     }
 

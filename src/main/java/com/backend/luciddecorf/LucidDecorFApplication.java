@@ -18,7 +18,7 @@ public class LucidDecorFApplication {
 
 //TODO: Set up Spring Boot project structure [completed]
 
-//TODO: Add basic REST API for health check
+//TODO: Add basic REST API for health check [completed]
 
 //TODO: Add database configuration (MySQL)
 
