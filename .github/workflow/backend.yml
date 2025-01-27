@@ -1,0 +1,45 @@
+name : Build and Test Backend
+
+on :
+  push:
+    branches:
+        - main
+    pull_request:
+        branches:
+        - main
+
+jobs :
+  build :
+    runs-on: ubuntu-latest
+
+    steps :
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses : actions/setup-java@v3
+      with:
+        java-version: '17'
+
+    - name: Install dependencies and build
+      run : ./mvnw clean install
+      working-directory: ./
+
+    - name: Run unit tests
+      run : ./mvnw test
+      working-directory: ./
+
+#      Frontend
+    - name: Deploy to S3
+      uses : aws-actions/sr-sync-actions@v2
+      with:
+        bucket : ${{ secrets.AWS_S3-BUCKET }}
+        region : ${{ secrets.AWS_REGION }}
+        source : ./frontend/dist
+        destination : /
+        delete : true
+#      Frontend caching
+
+#        Backend
+    - name: Invalidate CloudFront
+      uses : akhileshns/heroku-deploy@v3.12.12
