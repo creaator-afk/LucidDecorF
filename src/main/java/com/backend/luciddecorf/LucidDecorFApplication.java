@@ -20,7 +20,7 @@ public class LucidDecorFApplication {
 
 //TODO: Add basic REST API for health check [completed]
 
-//TODO: Add database configuration (MySQL)
+//TODO: Add database configuration (MySQL) [completed]
 
 //TODO: Merge feature/backend-setup into develop
 
