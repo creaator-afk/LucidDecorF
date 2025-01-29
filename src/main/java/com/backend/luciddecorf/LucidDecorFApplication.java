@@ -22,7 +22,7 @@ public class LucidDecorFApplication {
 
 //TODO: Add database configuration (MySQL) [completed]
 
-//TODO: Merge feature/backend-setup into develop
+//TODO: Merge feature/backend-setup into develop [completed]
 
 //TODO: Initialize Angular project
 
@@ -44,11 +44,11 @@ public class LucidDecorFApplication {
 
 //TODO: Merge feature/authentication into develop
 
-//TODO: Create interior design services API (CRUD)
+//TODO: Create interior design services API (CRUD) [completed]
 
-//TODO: Add booking and consultation endpoints
+//TODO: Add booking and consultation endpoints [completed]
 
-//TODO: Implement payment gateway integration
+//TODO: Implement payment gateway integration [completed]
 
 //TODO: Create UI for displaying available services
 
