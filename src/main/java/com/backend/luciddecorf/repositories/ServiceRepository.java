@@ -1,6 +1,6 @@
 package com.backend.luciddecorf.repositories;
 
-import com.backend.luciddecorf.model.InteriorService;
+import com.backend.luciddecorf.model.InteriorDesign;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -12,20 +12,22 @@ import java.util.List;
 
 // Repository with enhanced methods
 @Repository
-public interface ServiceRepository extends JpaRepository<InteriorService, Long> {
+public interface ServiceRepository extends JpaRepository<InteriorDesign, Long> {
     // Existing methods
-    InteriorServiceRepository save(InteriorServiceRepository service);
-    InteriorServiceRepository findByTitle(String title);
-    InteriorServiceRepository findByDescription(String description);
+    InteriorDesign save(InteriorDesign service);
+    InteriorDesign findByTitle(String title);
+    InteriorDesign findByDescription(String description);
 
     // New query methods
-    List<InteriorService> findByServiceType(InteriorServiceRepository.ServiceCategory serviceType);
-    List<InteriorService> findByDifficultyLevel(InteriorServiceRepository.DifficultyLevel difficultyLevel);
-    List<InteriorService> findByBasePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
-    List<InteriorService> findByIsActiveTrue();
+    List<InteriorDesign> findByServiceType(InteriorDesign.ServiceCategory serviceType);
+    List<InteriorDesign> findByDifficultyLevel(InteriorDesign.DifficultyLevel difficultyLevel);
+    List<InteriorDesign> findByBasePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
+    List<InteriorDesign> findByIsActiveTrue();
 
-    @Query("SELECT s FROM InteriorServiceRepository s WHERE s.estimatedDurationHours <= :maxHours")
-    default List<InteriorServiceRepository> findServicesByMaxDuration(@Param("maxHours") Integer maxHours) {
+    @Query("SELECT s FROM InteriorDesign s WHERE s.estimatedDurationHours <= :maxHours")
+    default List<InteriorDesign> findServicesByMaxDuration(@Param("maxHours") Integer maxHours) {
         return null;
     }
+
+    List<InteriorDesign> findByTitleContainsIgnoreCase(String title);
 }

@@ -1,7 +1,7 @@
 package com.backend.luciddecorf.controller;
 
     import com.backend.luciddecorf.exceptions.ServiceNotFoundException;
-    import com.backend.luciddecorf.model.InteriorService;
+    import com.backend.luciddecorf.model.InteriorDesign;
     import com.backend.luciddecorf.service.InteriorDesignService;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
@@ -22,14 +22,20 @@ package com.backend.luciddecorf.controller;
         }
 
         @PostMapping("/service")
-        public ResponseEntity<InteriorService> addService(@RequestBody InteriorService interiorService) {
-            InteriorService createdService = interiorDesignService.createService(interiorService);
+        public ResponseEntity<InteriorDesign> addService(@RequestBody InteriorDesign interiorDesign) {
+            InteriorDesign createdService = interiorDesignService.createService(interiorDesign);
             return new ResponseEntity<>(createdService, HttpStatus.CREATED);
         }
 
+        @GetMapping("/service/name")
+        public ResponseEntity<List<InteriorDesign>> getServiceByName(@RequestParam String title) {
+            List<InteriorDesign> services = interiorDesignService.getServiceByName(title);
+            return new ResponseEntity<>(services, HttpStatus.OK);
+        }
+
         @PutMapping("/service/{id}")
-        public ResponseEntity<InteriorService> updateService(@PathVariable long id, @RequestBody InteriorService interiorService) throws ServiceNotFoundException {
-            InteriorService updatedService = interiorDesignService.updateService(id, interiorService);
+        public ResponseEntity<InteriorDesign> updateService(@PathVariable long id, @RequestBody InteriorDesign interiorDesign) throws ServiceNotFoundException {
+            InteriorDesign updatedService = interiorDesignService.updateService(id, interiorDesign);
             return new ResponseEntity<>(updatedService, HttpStatus.OK);
         }
 
@@ -40,14 +46,14 @@ package com.backend.luciddecorf.controller;
         }
 
         @GetMapping("/service/{id}")
-        public ResponseEntity<InteriorService> getService(@PathVariable long id) throws ServiceNotFoundException {
-            InteriorService service = interiorDesignService.getServiceById(id);
+        public ResponseEntity<InteriorDesign> getService(@PathVariable long id) throws ServiceNotFoundException {
+            InteriorDesign service = interiorDesignService.getServiceById(id);
             return new ResponseEntity<>(service, HttpStatus.OK);
         }
 
         @GetMapping("/")
-        public ResponseEntity<List<InteriorService>> getAllServices() {
-            List<InteriorService> services = interiorDesignService.getAllServices();
+        public ResponseEntity<List<InteriorDesign>> getAllServices() {
+            List<InteriorDesign> services = interiorDesignService.getAllServices();
             return new ResponseEntity<>(services, HttpStatus.OK);
         }
     }

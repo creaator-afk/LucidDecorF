@@ -1,13 +1,15 @@
-package com.backend.luciddecorf.repositories;
+package com.backend.luciddecorf.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.math.BigDecimal;
+
 // Example of a concrete implementation
 @Entity
 @Table(name = "residential_design_services")
-public class ResidentialDesignServiceRepository extends InteriorServiceRepository {
+public class ResidentialDesignDesign extends InteriorDesign {
     @Column(name = "room_type")
     private String roomType;
 
@@ -20,7 +22,7 @@ public class ResidentialDesignServiceRepository extends InteriorServiceRepositor
         return getBasePrice().doubleValue() * (roomType != null ? 1.2 : 1.0);
     }
 
-    private Number getBasePrice() {
+    public BigDecimal getBasePrice() {
         
         return null;
     }
