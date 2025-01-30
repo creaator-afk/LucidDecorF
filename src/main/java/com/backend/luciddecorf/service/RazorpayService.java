@@ -3,9 +3,11 @@ package com.backend.luciddecorf.service;
 
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
+import jakarta.annotation.PostConstruct;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class RazorpayService {
@@ -18,7 +20,8 @@ public class RazorpayService {
     @Value("${razorpay.secret}")
     private String secret;
 
-    public RazorpayService() throws Exception {
+    @PostConstruct
+    public void init() throws Exception {
         this.client = new RazorpayClient(key, secret);
     }
 
@@ -28,6 +31,6 @@ public class RazorpayService {
         orderRequest.put("currency", currency);
         orderRequest.put("payment_capture", 1); // auto capture
 
-        return client.Orders.create(orderRequest);
+        return client.orders.create(orderRequest);
     }
 }
