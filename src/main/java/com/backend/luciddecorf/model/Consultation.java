@@ -1,8 +1,13 @@
 package com.backend.luciddecorf.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 public class Consultation {
     @Id
@@ -16,5 +21,4 @@ public class Consultation {
     private LocalDateTime consultationTime;
     private String notes;
 
-    // Getters and setters
 }
