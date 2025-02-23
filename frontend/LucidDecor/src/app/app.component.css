@@ -1,0 +1,210 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+/* Navbar */
+app-navbar {
+  background-color: #333;
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  background: url('hero.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 5em 1em;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 1em 2em;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.cta-button:hover {
+  background-color: #ff4500;
+}
+
+/* About Section */
+.about {
+  background-color: #f4f4f4;
+  padding: 2em 1em;
+  text-align: center;
+}
+
+/* Services Section */
+.services {
+  padding: 2em 1em;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.service-item {
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed; /* Parallax effect */
+  background-position: center;
+  color: white;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  height: 300px; /* Adjust height as needed */
+}
+
+.service-item h3, .service-item p {
+  margin: 0;
+  padding: 0.5em;
+  background: rgba(0, 0, 0, 0.5); /* Transparent background */
+  border-radius: 5px;
+}
+
+.service-item p {
+  margin: 0.5em 0 0;
+}
+
+/* Portfolio Section */
+.portfolio {
+  background-color: #f4f4f4;
+  padding: 2em 1em;
+  text-align: center;
+}
+
+.accordion {
+  display: flex;
+  height: 700px; /* Adjust height as needed */
+}
+
+.accordion-item {
+
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  transition: flex 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.accordion-item:hover {
+  flex: 5;
+}
+
+.accordion-item p {
+  margin: 0;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+/* Contact Section */
+.contact {
+  padding: 2em 1em;
+  text-align: center;
+}
+
+/* Footer */
+app-footer {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+/* Services Section */
+.service1 {
+  background-image: url('../assets/images/service1.jpg');
+}
+
+.service2 {
+  background-image: url('../assets/images/service2.jpg');
+}
+
+.service3 {
+  background-image: url('../assets/images/service3.jpg');
+}
+
+.service4 {
+  background-image: url('../assets/images/service4.jpg');
+}
+
+/* Portfolio Section */
+.project1 {
+  background-image: url('../assets/images/project1.jpg');
+}
+
+.project2 {
+  background-image: url('../assets/images/project2.jpg');
+}
+
+.project3 {
+  background-image: url('../assets/images/project3.jpg');
+}
+
+.project4 {
+  background-image: url('../assets/images/project4.jpg');
+}
+
+.project5 {
+  background-image: url('../assets/images/project5.jpg');
+}
+
+.project6 {
+  background-image: url('../assets/images/project6.jpg');
+}
+
+.project7 {
+  background-image: url('../assets/images/project7.jpg');
+}
+
