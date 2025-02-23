@@ -19,13 +19,12 @@ p {
 app-navbar {
   background-color: #333;
   color: white;
-  padding: 1em;
 }
 
 /* Hero Section */
 .hero {
   position: relative;
-  background: url('hero1.jpg') no-repeat center center/cover;
+  background: url('hero.jpg') no-repeat center center/cover;
   color: white;
   text-align: center;
   padding: 5em 1em;
@@ -81,8 +80,35 @@ app-navbar {
   text-align: center;
 }
 
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
 .service-item {
-  margin: 1em 0;
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed; /* Parallax effect */
+  background-position: center;
+  color: white;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  height: 300px; /* Adjust height as needed */
+}
+
+.service-item h3, .service-item p {
+  margin: 0;
+  padding: 0.5em;
+  background: rgba(0, 0, 0, 0.5); /* Transparent background */
+  border-radius: 5px;
+}
+
+.service-item p {
+  margin: 0.5em 0 0;
 }
 
 /* Portfolio Section */
@@ -90,6 +116,37 @@ app-navbar {
   background-color: #f4f4f4;
   padding: 2em 1em;
   text-align: center;
+}
+
+.accordion {
+  display: flex;
+  height: 700px; /* Adjust height as needed */
+}
+
+.accordion-item {
+
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  transition: flex 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.accordion-item:hover {
+  flex: 5;
+}
+
+.accordion-item p {
+  margin: 0;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
 /* Contact Section */
@@ -105,3 +162,49 @@ app-footer {
   padding: 1em;
   text-align: center;
 }
+/* Services Section */
+.service1 {
+  background-image: url('../assets/images/service1.jpg');
+}
+
+.service2 {
+  background-image: url('../assets/images/service2.jpg');
+}
+
+.service3 {
+  background-image: url('../assets/images/service3.jpg');
+}
+
+.service4 {
+  background-image: url('../assets/images/service4.jpg');
+}
+
+/* Portfolio Section */
+.project1 {
+  background-image: url('../assets/images/project1.jpg');
+}
+
+.project2 {
+  background-image: url('../assets/images/project2.jpg');
+}
+
+.project3 {
+  background-image: url('../assets/images/project3.jpg');
+}
+
+.project4 {
+  background-image: url('../assets/images/project4.jpg');
+}
+
+.project5 {
+  background-image: url('../assets/images/project5.jpg');
+}
+
+.project6 {
+  background-image: url('../assets/images/project6.jpg');
+}
+
+.project7 {
+  background-image: url('../assets/images/project7.jpg');
+}
+
