@@ -1,0 +1,21 @@
+.service-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.service-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.service-card h2 {
+  margin: 16px 0 8px;
+}
+
+.service-card p {
+  margin: 8px 0;
+}

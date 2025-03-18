@@ -1,0 +1,23 @@
+<div class="container mx-auto p-4" style="width: 100vw">
+  <table class="w-full bg-white">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Service</th>
+        <th class="py-2 px-4 border-b">Date</th>
+        <th class="py-2 px-4 border-b">Price</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings" class="hover:bg-gray-100">
+        <td class="py-2 px-4 border-b">{{ booking.service }}</td>
+        <td class="py-2 px-4 border-b">{{ booking.date }}</td>
+        <td class="py-2 px-4 border-b">{{ booking.price | currency }}</td>
+        <td class="py-2 px-4 border-b flex-row">
+          <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Edit</button>
+          <button class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

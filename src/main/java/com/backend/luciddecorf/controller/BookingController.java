@@ -2,7 +2,6 @@ package com.backend.luciddecorf.controller;
 
     import com.backend.luciddecorf.model.Booking;
     import com.backend.luciddecorf.service.BookingService;
-    import org.mockito.Mock;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.boot.test.mock.mockito.MockBean;
     import org.springframework.web.bind.annotation.*;

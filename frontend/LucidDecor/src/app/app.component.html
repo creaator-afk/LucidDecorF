@@ -1,14 +1,8 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
+    --inter-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
     --french-violet: oklch(47.66% 0.246 305.88);
@@ -36,9 +30,7 @@
 
     --pill-accent: var(--bright-blue);
 
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    font-family: var(--inter-font);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -52,8 +44,8 @@
     letter-spacing: -0.125rem;
     margin: 0;
     font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   }
 
   p {
@@ -65,31 +57,53 @@
     width: 100%;
     min-height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
+    background: #333333;
+    border-radius: 24px;
   }
 
   .angular-logo {
     max-width: 9.2rem;
   }
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    min-height: fit-content;
+    height: 50vh;
+    max-height: 350vw;
+  }
+
+  nav a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+  }
+
+  nav a:hover {
+
+    background-color: var(--gray-400);
+  }
+
   .content {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    max-width: 700px;
     margin-bottom: 3rem;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
   .divider {
@@ -133,9 +147,11 @@
   .pill-group .pill:nth-child(6n + 1) {
     --pill-accent: var(--bright-blue);
   }
+
   .pill-group .pill:nth-child(6n + 2) {
     --pill-accent: var(--french-violet);
   }
+
   .pill-group .pill:nth-child(6n + 3),
   .pill-group .pill:nth-child(6n + 4),
   .pill-group .pill:nth-child(6n + 5) {
@@ -175,35 +191,49 @@
       margin-block: 1.5rem;
     }
   }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  footer {
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--gray-400);
+    color: var(--gray-900);
+  }
 </style>
 
-<main class="main">
+<main class="main"
+      style='border-radius: unset; background-position: top; background-repeat: no-repeat; background-size: contain; background-image: url("assets/images/header-background.jpeg");)'>
+  <header class="header">
+    <h1 style="color: white; cursor:pointer;">{{ title }}</h1>
+    <nav style="color: white">
+      <a (click)="selectComponent('home')">Home</a>
+      <a (click)="selectComponent('about')">About</a>
+      <a (click)="selectComponent('services')">Services</a>
+      <a (click)="selectComponent('projects')">Projects</a>
+      <a (click)="selectComponent('blogs')">Blogs</a>
+      <a (click)="selectComponent('dashboard')">Dashboard</a>
+      <a (click)="selectComponent('logout')">Logout</a>
+    </nav>
+  </header>
   <div class="content">
-    <header>
-      <h1>{{ title }}</h1>
-      <nav>
-        <a routerLink="/">Home</a>
-        <a routerLink="/profile">Profile</a>
-      </nav>
-    </header>
-
-    <main>
+    <main style="width: 100%; align-content: start;">
+      <div *ngIf="selectedComponent === 'home'" style="width: 100%">
+        <app-home-page></app-home-page>
+      </div>
+      <div *ngIf="selectedComponent === 'dashboard'">
+        <app-dashboard></app-dashboard>
+      </div>
+      <div *ngIf="selectedComponent === 'logout'">
+        <app-logout></app-logout>
+      </div>
       <router-outlet></router-outlet>
     </main>
-
     <footer>
       <p>&copy; 2023 Video Streaming Platform</p>
     </footer>
   </div>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />

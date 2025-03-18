@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center gap-4">
+  <div class="flex justify-between w-full max-w-lg">
+    <input type="text" placeholder="Search for services..." [(ngModel)]="searchQuery" class="p-2 border rounded w-full mr-2"/>
+    <button (click)="onSearch()" class="p-2 bg-blue-500 text-white rounded">Search</button>
+  </div>
+  <div *ngIf="filteredServices && filteredServices.length; else noResults" class="w-full ">
+    <div class="flex gap-4">
+      <div *ngFor="let service of filteredServices" class="border rounded mb-2 w-1/3">
+        <div class="bg-gray-200 p-2 cursor-pointer" (click)="toggleAccordion(service)">
+          <h3>{{ service.name }}</h3>
+        </div>
+        <div [ngClass]="{'block': service.active, 'hidden': !service.active}" class="p-2">
+          <p>{{ service.description }}</p>
+          <p>Price: {{ service.price | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noResults>
+    <p>No services found.</p>
+  </ng-template>
+</div>

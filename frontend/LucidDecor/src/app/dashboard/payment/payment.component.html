@@ -1,0 +1,21 @@
+<div class="payment-response" *ngIf="paymentStatus === 'success'">
+  <h1>Payment Successful</h1>
+  <p>Your payment has been processed successfully.</p>
+</div>
+
+<div class="payment-response" *ngIf="paymentStatus === 'failure'">
+  <h1>Payment Failed</h1>
+  <p>There was an issue processing your payment. Please try again.</p>
+</div>
+
+<div class="payment-response" *ngIf="paymentStatus === 'pending'">
+  <h1>Payment Pending</h1>
+  <p>Your payment is currently being processed. Please wait.</p>
+</div>
+
+<div class="payment-actions">
+  <button (click)="setPaymentStatus('success')">Simulate Success</button>
+  <button (click)="setPaymentStatus('failure')">Simulate Failure</button>
+  <button (click)="setPaymentStatus('pending')">Simulate Pending</button>
+  <button (click)="setPaymentStatus('proceed')">Simulate Proceed</button>
+</div>
