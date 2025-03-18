@@ -12,11 +12,9 @@ import java.util.List;
 
 // Repository with enhanced methods
 @Repository
-public interface ServiceRepository extends JpaRepository<InteriorDesign, Long> {
+public interface ServiceRepository extends JpaRepository<InteriorDesign, Long>, ServiceRepositoryCustom {
     // Existing methods
     InteriorDesign save(InteriorDesign service);
-    InteriorDesign findByTitle(String title);
-    InteriorDesign findByDescription(String description);
 
     // New query methods
     List<InteriorDesign> findByServiceType(InteriorDesign.ServiceCategory serviceType);
@@ -29,5 +27,4 @@ public interface ServiceRepository extends JpaRepository<InteriorDesign, Long> {
         return null;
     }
 
-    List<InteriorDesign> findByTitleContainsIgnoreCase(String title);
 }

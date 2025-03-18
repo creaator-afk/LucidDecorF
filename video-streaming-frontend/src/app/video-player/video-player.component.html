@@ -1,0 +1,5 @@
+<div *ngIf="video" class="video-player">
+  <video [src]="video.url" controls></video>
+  <h2>{{ video.title }}</h2>
+  <p>{{ video.description }}</p>
+</div>

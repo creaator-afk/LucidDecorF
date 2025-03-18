@@ -1,0 +1,15 @@
+<div class="booking-form">
+  <div *ngIf="services.length > 0" class="service-card">
+    <img [src]="services[0].image" alt="{{ services[0].name }}" class="service-image" />
+    <h2>{{ services[0].name }}</h2>
+    <p>{{ services[0].description }}</p>
+    <p>Price: {{ services[0].price | currency }}</p>
+  </div>
+  <form [formGroup]="bookServiceForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="date">Select Date:</label>
+      <input id="date" type="date" formControlName="date" class="form-control" />
+    </div>
+    <button (click)="confirmBooking(services[0].id)" type="submit" class="btn btn-primary" [disabled]="bookServiceForm.invalid">Book Service</button>
+  </form>
+</div>

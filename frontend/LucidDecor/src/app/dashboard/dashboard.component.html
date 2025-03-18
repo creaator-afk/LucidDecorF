@@ -1,0 +1,50 @@
+<h2>Dashboard</h2>
+<div>
+  <p>Welcome to the dashboard!</p>
+  <button (click)="selectComponent('view-services')"> view-services</button>
+  <button (click)="selectComponent('filter-services')"> filter-services</button>
+  <button (click)="selectComponent('select-service')"> select-service</button>
+  <button (click)="selectComponent('book-service')"> book-service</button>
+  <button (click)="selectComponent('select-date-time')"> select-date-time</button>
+  <button (click)="selectComponent('confirm-booking')"> confirm-booking</button>
+  <button (click)="selectComponent('payment')"> payment </button>
+  <button (click)="selectComponent('enter-payment-details')"> enter-payment-details</button>
+  <button (click)="selectComponent('review-payment')"> review-payment</button>
+  <button (click)="selectComponent('complete-payment')"> complete-payment</button>
+  <button (click)="selectComponent('view-booking-history')"> view-booking-history</button>
+</div>
+<main>
+  <div *ngIf="selectedComponent === 'view-services'">
+    <app-view-services></app-view-services>
+  </div>
+  <div *ngIf="selectedComponent === 'filter-services'">
+    <app-filter-services></app-filter-services>
+  </div>
+  <div *ngIf="selectedComponent === 'select-service'">
+    <app-select-service></app-select-service>
+  </div>
+  <div *ngIf="selectedComponent === 'book-service'">
+    <app-book-service></app-book-service>
+  </div>
+  <div *ngIf="selectedComponent === 'select-date-time'">
+    <app-select-date-time></app-select-date-time>
+  </div>
+  <div *ngIf="selectedComponent === 'confirm-booking'">
+    <app-confirm-booking></app-confirm-booking>
+  </div>
+  <div *ngIf="selectedComponent === 'payment'">
+    <app-payment></app-payment>
+  </div>
+  <div *ngIf="selectedComponent === 'enter-payment-details'">
+    <app-enter-payment-details></app-enter-payment-details>
+  </div>
+  <div *ngIf="selectedComponent === 'review-payment'">
+    <app-review-payment></app-review-payment>
+  </div>
+  <div *ngIf="selectedComponent === 'complete-payment'">
+    <app-complete-payment></app-complete-payment>
+  </div>
+  <div *ngIf="selectedComponent === 'view-booking-history'">
+    <app-view-booking-history></app-view-booking-history>
+  </div>
+</main>

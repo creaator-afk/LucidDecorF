@@ -9,10 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-public class Consultation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Consultation extends BaseModel{
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

@@ -1,0 +1,11 @@
+<div *ngIf="bookingDetails else noBookingDetails" class="booking-details-card">
+  <img [src]="bookingDetails?.service?.image" alt="{{ bookingDetails?.service?.name }}" class="service-image" />
+  <h2>{{ bookingDetails?.service?.name }}</h2>
+  <p>{{ bookingDetails?.service?.description }}</p>
+  <p><strong>Price:</strong> {{ bookingDetails?.service?.price | currency }}</p>
+  <p><strong>Booking Date:</strong> {{ bookingDetails?.date }}</p>
+  <button class="btn btn-primary" (click)="confirmBooking()">Confirm Booking</button>
+</div>
+<ng-template #noBookingDetails>
+  <p>No booking details available.</p>
+</ng-template>
