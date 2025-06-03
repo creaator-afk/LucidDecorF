@@ -1,4 +1,5 @@
 # LucidDecorF
+# this is a new commit
 
 Welcome to LucidDecorF, a comprehensive interior design service application. This project integrates both backend and frontend technologies to provide a seamless user experience. The backend is built with Spring Boot, while the frontend is developed using Angular.
 
