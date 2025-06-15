@@ -3,6 +3,7 @@ import {SearchForServicesComponent} from './search-for-services/search-for-servi
 import {ViewFeaturedServicesComponent} from './view-featured-services/view-featured-services.component';
 import {NavigateToLoginRegisterComponent} from './navigate-to-login-register/navigate-to-login-register.component';
 import {NgIf} from '@angular/common';
+import {RouterOutlet, Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,8 @@ import {NgIf} from '@angular/common';
     SearchForServicesComponent,
     ViewFeaturedServicesComponent,
     NavigateToLoginRegisterComponent,
-    NgIf
+    NgIf,
+    RouterOutlet
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -19,8 +21,13 @@ import {NgIf} from '@angular/common';
 export class HomePageComponent {
   selectedComponent: string = 'view-featured-services'
 
+  constructor(private router: Router) {}
+
   selectComponent(component: string) {
     this.selectedComponent = component
+  }
 
+  navigateTo(path: string) {
+    this.router.navigate(['/' + path]);
   }
 }

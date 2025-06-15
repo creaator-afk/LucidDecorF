@@ -3,14 +3,14 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LogoutComponent} from './logout/logout.component';
 import {NgIf} from '@angular/common';
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {filter} from 'rxjs';
 import {BookServiceComponent} from './dashboard/book-service/book-service.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HomePageComponent, DashboardComponent, LogoutComponent, NgIf, BookServiceComponent, RouterOutlet],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

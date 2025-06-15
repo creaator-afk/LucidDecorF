@@ -1,16 +1,63 @@
-<h2>Featured Services</h2>
-<div style="display: flex; flex-direction: column; align-items: center" *ngIf="services && services.length; else noServices">
-  <div *ngFor="let service of services" class="service-card" [ngClass]="{'column': service.id % 2 === 0, 'column-reverse': service.id % 2 !== 0}"
-       style="display: flex; justify-content: space-between;width: 80%">
-    <img height="450px" width="650px" [src]="service.image" [alt]="service.name"/>
-    <div style="display: flex; justify-content: center;width: 100%; align-content: start; margin-left: 2.5em; flex-direction: column">
-      <h3>{{ service.name }}</h3>
-      <p>{{ service.description }}</p>
-      <p><strong>Price:</strong> {{ service.price | currency }}</p>
-      <button class="p-2 bg-blue-500 text-white rounded w-fit" (click)="bookService(service.id)">Book Now</button>
+<!-- Enhanced Featured Services with subtle white and blue accent theme -->
+<div class="flex flex-col md:flex-row gap-8 mb-8">
+  <!-- Filters Section -->
+  <div class="flex flex-col gap-4 bg-white rounded-xl shadow p-6 min-w-[220px]">
+    <h4 class="text-lg font-semibold text-gray-700 mb-2">Filter</h4>
+    <div class="grid gap-2">
+      <select class="p-2 rounded border border-blue-100 focus:ring-2 focus:ring-blue-400 text-gray-700 bg-blue-50" id="category"
+              [(ngModel)]="selectedCategory" (change)="filterServices()">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <!-- Add more filter controls here if needed -->
+    </div>
+    <div class="mt-4 flex items-center justify-center">
+      <span class="inline-flex items-center gap-2 text-sm text-gray-500"><svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A2 2 0 013 15.382V6.618a2 2 0 011.553-1.894L9 2m6 0l5.447 2.724A2 2 0 0121 6.618v8.764a2 2 0 01-1.553 1.894L15 20m-6 0V2m6 0v18"/></svg>Map</span>
+    </div>
+  </div>
+
+  <!-- Services List Section -->
+  <div class="flex-1" *ngIf="services && services.length; else noServices">
+    <div class="grid grid-cols-1 gap-8">
+      <div *ngFor="let service of services" class="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-200">
+        <img [src]="service.image" [alt]="service.name"
+             class="object-cover object-center w-full md:w-[350px] h-[220px] md:h-auto" />
+        <div class="flex flex-col justify-between p-6 flex-1">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ service.name }}</h3>
+            <p class="text-gray-600 mb-4">{{ service.description }}</p>
+            <p class="text-lg font-semibold text-blue-600 mb-4"><strong>Price:</strong> {{ service.price | currency }}</p>
+          </div>
+          <button class="self-end px-6 py-2 bg-blue-500 text-white rounded-md font-semibold shadow hover:bg-blue-600 transition" (click)="bookService(service.id)">Book Now</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Banner Carousel Section -->
+<div class="relative flex flex-col w-full px-0 md:px-10 mt-8">
+  <img src="assets/images/service1.jpg" alt="Featured Services Banner"
+       class="rounded-xl shadow-lg object-cover object-center w-full h-[220px] md:h-[350px]" />
+
+  <!-- Previous Button -->
+  <button (click)="previousImage()"
+          class="absolute top-1/2 left-2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white border-2 border-blue-100 shadow-lg rounded-full text-gray-700 text-3xl hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-200 cursor-pointer z-10 group">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7 group-hover:scale-110 transition-transform">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+    <span class="sr-only">Previous</span>
+  </button>
+
+  <!-- Next Button -->
+  <button (click)="nextImage()"
+          class="absolute top-1/2 right-2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white border-2 border-blue-100 shadow-lg rounded-full text-gray-700 text-3xl hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-200 cursor-pointer z-10 group">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-7 h-7 group-hover:scale-110 transition-transform">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+
 <ng-template #noServices>
   <p>No featured services available at the moment.</p>
 </ng-template>
