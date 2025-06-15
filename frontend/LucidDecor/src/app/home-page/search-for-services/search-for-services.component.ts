@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+// src/app/home-page/search-for-services/search-for-services.component.ts
+  import { Component, OnInit } from '@angular/core';
   import { FormsModule } from '@angular/forms';
   import { CurrencyPipe, NgForOf, NgIf, NgClass } from '@angular/common';
+  import { InteriorDesignService } from '../../services/interior-design.service';
 
   interface Service {
     name: string;
@@ -21,18 +23,17 @@ import { Component, OnInit } from '@angular/core';
     services: Service[] = [];
     filteredServices: Service[] = [];
 
+    constructor(private readonly interiorDesignService: InteriorDesignService) {}
+
     ngOnInit(): void {
       this.fetchServices();
     }
 
     fetchServices(): void {
-      // Simulate fetching data from a service
-      this.services = [
-        { name: 'Service 1', description: 'Description for service 1', price: 100 },
-        { name: 'Service 2', description: 'Description for service 2', price: 200 },
-        { name: 'Service 3', description: 'Description for service 3', price: 300 }
-      ];
-      this.filteredServices = this.services;
+      this.interiorDesignService.getServiceByName('R').subscribe((data: any) => {
+        this.services = data;
+        this.filteredServices = this.services;
+      });
     }
 
     onSearch(): void {

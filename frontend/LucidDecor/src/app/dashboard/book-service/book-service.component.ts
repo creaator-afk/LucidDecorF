@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CurrencyPipe, NgIf} from '@angular/common';
+import { BookingFlowService } from '../booking-flow.service';
 
 interface Service {
   image: string;
@@ -26,30 +27,35 @@ export class BookServiceComponent implements OnInit {
   serviceId: number | undefined;
   services: Service[] = [];
   bookServiceForm: FormGroup;
+  selectedService: any;
 
-  constructor(private readonly router: Router, private readonly route: ActivatedRoute, private readonly fb: FormBuilder) {
+  constructor(
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly fb: FormBuilder,
+    private bookingFlow: BookingFlowService
+  ) {
     this.bookServiceForm = this.fb.group({
       date: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.fetchFeaturedServices()
-    this.serviceId = +this.route.snapshot.paramMap.get('id')!;
-    this.services = this.services.filter(service => service.id === this.serviceId);
+    this.selectedService = this.bookingFlow.selectedService;
+    if (!this.selectedService) {
+      this.router.navigate(['/select-service']);
+    }
   }
 
   onSubmit() {
     if (this.bookServiceForm.valid) {
-      const bookingDetails = {
-        serviceId: this.serviceId,
+      this.bookingFlow.bookingDetails = {
         ...this.bookServiceForm.value,
+        service: this.selectedService
       };
-      console.log('Booking Details:', bookingDetails)
-      // TODO: Handle booking logic and remove console log
+      this.router.navigate(['/payment']);
     }
   }
-
 
   fetchFeaturedServices(): void {
     // Simulate fetching data from a service

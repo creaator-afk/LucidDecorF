@@ -2,3 +2,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+  For most design, prefer using Tailwind utility classes directly in your templates.
+  Example for a card:
+  <div class="bg-white rounded-xl shadow-md p-8 max-w-2xl mx-auto my-8">
+    ...
+  </div>
+  Example for a button:
+  <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-md px-6 py-2 shadow transition">
+    ...
+  </button>
+  Example for a link:
+  <a class="text-blue-500 hover:text-blue-700 underline transition">
+    ...
+  </a>
+*/
+
+body {
+  @apply bg-white text-gray-900 font-sans min-h-screen;
+}
+
+app-root {
+  @apply flex flex-col min-h-screen items-center justify-start bg-white;
+}
+
+/* Minimal custom styles for global consistency */
+.container, .card, .mat-card {
+  @apply bg-white rounded-xl shadow-md p-8 my-8 max-w-2xl mx-auto;
+  border: 1px solid theme('colors.blue.50'); /* subtle accent border */
+}
+
+button, .btn, .mat-raised-button {
+  @apply bg-blue-500 text-white rounded-md px-6 py-2 shadow transition;
+  border: none;
+}
+button:hover, .btn:hover, .mat-raised-button:hover {
+  @apply bg-blue-600 shadow-lg;
+}
+
+a, .link {
+  @apply text-blue-500 transition hover:text-blue-700 underline;
+}
+
+input, textarea, select {
+  @apply border border-blue-100 rounded-md px-4 py-2 text-base bg-blue-50 mb-4 transition focus:border-blue-400 focus:outline-none;
+}

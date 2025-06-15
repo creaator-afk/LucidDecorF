@@ -1,50 +1,53 @@
-<h2>Dashboard</h2>
-<div>
-  <p>Welcome to the dashboard!</p>
-  <button (click)="selectComponent('view-services')"> view-services</button>
-  <button (click)="selectComponent('filter-services')"> filter-services</button>
-  <button (click)="selectComponent('select-service')"> select-service</button>
-  <button (click)="selectComponent('book-service')"> book-service</button>
-  <button (click)="selectComponent('select-date-time')"> select-date-time</button>
-  <button (click)="selectComponent('confirm-booking')"> confirm-booking</button>
-  <button (click)="selectComponent('payment')"> payment </button>
-  <button (click)="selectComponent('enter-payment-details')"> enter-payment-details</button>
-  <button (click)="selectComponent('review-payment')"> review-payment</button>
-  <button (click)="selectComponent('complete-payment')"> complete-payment</button>
-  <button (click)="selectComponent('view-booking-history')"> view-booking-history</button>
+<!-- Dashboard styled with subtle white and blue accent theme -->
+<div class="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto my-10">
+  <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Dashboard</h2>
+  <div class="flex flex-wrap gap-4 justify-center mb-8">
+    <button (click)="selectComponent('view-services')" class="px-5 py-2 rounded-md bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition">View Services</button>
+    <button (click)="selectComponent('filter-services')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Filter Services</button>
+    <button (click)="selectComponent('select-service')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Select Service</button>
+    <button (click)="selectComponent('book-service')" class="px-5 py-2 rounded-md bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition">Book Service</button>
+    <button (click)="selectComponent('select-date-time')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Select Date/Time</button>
+    <button (click)="selectComponent('confirm-booking')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Confirm Booking</button>
+    <button (click)="selectComponent('payment')" class="px-5 py-2 rounded-md bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition">Payment</button>
+    <button (click)="selectComponent('enter-payment-details')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Enter Payment Details</button>
+    <button (click)="selectComponent('review-payment')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">Review Payment</button>
+    <button (click)="selectComponent('complete-payment')" class="px-5 py-2 rounded-md bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition">Complete Payment</button>
+    <button (click)="selectComponent('view-booking-history')" class="px-5 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold shadow hover:bg-blue-200 transition">View Booking History</button>
+  </div>
+  <main>
+    <div *ngIf="selectedComponent === 'view-services'">
+      <app-view-services></app-view-services>
+    </div>
+    <div *ngIf="selectedComponent === 'filter-services'">
+      <app-filter-services></app-filter-services>
+    </div>
+    <div *ngIf="selectedComponent === 'select-service'">
+      <app-select-service></app-select-service>
+    </div>
+    <div *ngIf="selectedComponent === 'book-service'">
+      <app-book-service></app-book-service>
+    </div>
+    <div *ngIf="selectedComponent === 'select-date-time'">
+      <app-select-date-time></app-select-date-time>
+    </div>
+    <div *ngIf="selectedComponent === 'confirm-booking'">
+      <app-confirm-booking></app-confirm-booking>
+    </div>
+    <div *ngIf="selectedComponent === 'payment'">
+      <app-payment></app-payment>
+    </div>
+    <div *ngIf="selectedComponent === 'enter-payment-details'">
+      <app-enter-payment-details></app-enter-payment-details>
+    </div>
+    <div *ngIf="selectedComponent === 'review-payment'">
+      <app-review-payment></app-review-payment>
+    </div>
+    <div *ngIf="selectedComponent === 'complete-payment'">
+      <app-complete-payment></app-complete-payment>
+    </div>
+    <div *ngIf="selectedComponent === 'view-booking-history'">
+      <app-view-booking-history></app-view-booking-history>
+    </div>
+  </main>
 </div>
-<main>
-  <div *ngIf="selectedComponent === 'view-services'">
-    <app-view-services></app-view-services>
-  </div>
-  <div *ngIf="selectedComponent === 'filter-services'">
-    <app-filter-services></app-filter-services>
-  </div>
-  <div *ngIf="selectedComponent === 'select-service'">
-    <app-select-service></app-select-service>
-  </div>
-  <div *ngIf="selectedComponent === 'book-service'">
-    <app-book-service></app-book-service>
-  </div>
-  <div *ngIf="selectedComponent === 'select-date-time'">
-    <app-select-date-time></app-select-date-time>
-  </div>
-  <div *ngIf="selectedComponent === 'confirm-booking'">
-    <app-confirm-booking></app-confirm-booking>
-  </div>
-  <div *ngIf="selectedComponent === 'payment'">
-    <app-payment></app-payment>
-  </div>
-  <div *ngIf="selectedComponent === 'enter-payment-details'">
-    <app-enter-payment-details></app-enter-payment-details>
-  </div>
-  <div *ngIf="selectedComponent === 'review-payment'">
-    <app-review-payment></app-review-payment>
-  </div>
-  <div *ngIf="selectedComponent === 'complete-payment'">
-    <app-complete-payment></app-complete-payment>
-  </div>
-  <div *ngIf="selectedComponent === 'view-booking-history'">
-    <app-view-booking-history></app-view-booking-history>
-  </div>
-</main>
+
