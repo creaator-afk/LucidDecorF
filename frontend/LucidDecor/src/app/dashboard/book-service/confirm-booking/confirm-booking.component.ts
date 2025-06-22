@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CurrencyPipe, NgIf} from '@angular/common';
-import {InteriorDesignService} from '../../../services/interior-design.service';
+import { CurrencyPipe, NgIf, NgForOf, CommonModule } from '@angular/common';
 
 interface BookingDetails {
   serviceId: number;
@@ -33,14 +32,16 @@ interface BookingDetails {
   standalone: true,
   imports: [
     CurrencyPipe,
-    NgIf
+    NgIf,
+    NgForOf,
+    CommonModule
   ],
   styleUrls: ['./confirm-booking.component.css']
 })
 export class ConfirmBookingComponent implements OnInit {
   bookingDetails: BookingDetails | undefined;
 
-  constructor(private readonly interiorDesignService : InteriorDesignService,  private readonly router: Router,private readonly route: ActivatedRoute) {}
+  constructor(private readonly router: Router, private readonly route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
