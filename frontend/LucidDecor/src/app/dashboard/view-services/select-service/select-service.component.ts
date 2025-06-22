@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookingFlowService } from '../../booking-flow.service';
-import { NgForOf } from '@angular/common';
+import { NgIf, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-select-service',
   standalone: true,
-  imports: [NgForOf],
+  imports: [NgForOf, NgIf],
   templateUrl: './select-service.component.html',
   styleUrl: './select-service.component.css'
 })

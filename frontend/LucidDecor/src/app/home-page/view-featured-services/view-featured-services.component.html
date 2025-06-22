@@ -1,43 +1,7 @@
-<!-- Enhanced Featured Services with subtle white and blue accent theme -->
-<div class="flex flex-col md:flex-row gap-8 mb-8">
-  <!-- Filters Section -->
-  <div class="flex flex-col gap-4 bg-white rounded-xl shadow p-6 min-w-[220px]">
-    <h4 class="text-lg font-semibold text-gray-700 mb-2">Filter</h4>
-    <div class="grid gap-2">
-      <select class="p-2 rounded border border-blue-100 focus:ring-2 focus:ring-blue-400 text-gray-700 bg-blue-50" id="category"
-              [(ngModel)]="selectedCategory" (change)="filterServices()">
-        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-      </select>
-      <!-- Add more filter controls here if needed -->
-    </div>
-    <div class="mt-4 flex items-center justify-center">
-      <span class="inline-flex items-center gap-2 text-sm text-gray-500"><svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A2 2 0 013 15.382V6.618a2 2 0 011.553-1.894L9 2m6 0l5.447 2.724A2 2 0 0121 6.618v8.764a2 2 0 01-1.553 1.894L15 20m-6 0V2m6 0v18"/></svg>Map</span>
-    </div>
-  </div>
-
-  <!-- Services List Section -->
-  <div class="flex-1" *ngIf="services && services.length; else noServices">
-    <div class="grid grid-cols-1 gap-8">
-      <div *ngFor="let service of services" class="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-200">
-        <img [src]="service.image" [alt]="service.name"
-             class="object-cover object-center w-full md:w-[350px] h-[220px] md:h-auto" />
-        <div class="flex flex-col justify-between p-6 flex-1">
-          <div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ service.name }}</h3>
-            <p class="text-gray-600 mb-4">{{ service.description }}</p>
-            <p class="text-lg font-semibold text-blue-600 mb-4"><strong>Price:</strong> {{ service.price | currency }}</p>
-          </div>
-          <button class="self-end px-6 py-2 bg-blue-500 text-white rounded-md font-semibold shadow hover:bg-blue-600 transition" (click)="bookService(service.id)">Book Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Banner Carousel Section -->
 <div class="relative flex flex-col w-full px-0 md:px-10 mt-8">
   <img src="assets/images/service1.jpg" alt="Featured Services Banner"
-       class="rounded-xl shadow-lg object-cover object-center w-full h-[220px] md:h-[350px]" />
+       class="rounded-xl shadow-lg object-cover object-center w-full h-[220px] md:h-[650px]" />
 
   <!-- Previous Button -->
   <button (click)="previousImage()"
@@ -57,6 +21,92 @@
     <span class="sr-only">Next</span>
   </button>
 </div>
+<!-- Search for Services Section -->
+<app-search-for-services></app-search-for-services>
+<!-- Filters, Search, and Featured Services Section -->
+<div class="flex flex-col md:flex-row gap-8 mb-8">
+  <!-- Filters Section -->
+  <div class="flex flex-col gap-4 bg-white rounded-xl shadow p-6 min-w-[220px]">
+    <h4 class="text-lg font-semibold text-gray-700 mb-2">Filter</h4>
+    <div class="grid gap-2">
+      <select class="p-2 rounded border border-blue-100 focus:ring-2 focus:ring-blue-400 text-gray-700 bg-blue-50" id="category"
+              [(ngModel)]="selectedCategory" (change)="filterServices()">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <!-- Add more filter controls here if needed -->
+    </div>
+    <div class="mt-4 flex items-center justify-center">
+      <span class="inline-flex items-center gap-2 text-sm text-gray-500"><svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A2 2 0 013 15.382V6.618a2 2 0 011.553-1.894L9 2m6 0l5.447 2.724A2 2 0 0121 6.618v8.764a2 2 0 01-1.553 1.894L15 20m-6 0V2m6 0v18"/></svg>Map</span>
+    </div>
+  </div>
+
+  <!-- Services List Section -->
+  <div class="flex-1" *ngIf="services && services.length; else noServices">
+    <div class="grid grid-cols-1 gap-8">
+      <div *ngFor="let service of services" class="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-200 relative">
+        <div class="relative w-full md:w-[350px] h-[220px] md:h-auto">
+          <img [src]="service.image" [alt]="service.name"
+               class="object-cover object-center w-full h-full" />
+          <div class="absolute bottom-2 right-2 z-10">
+            <img *ngIf="service.sellerProfile" [src]="service.sellerProfile" alt="Seller Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+          </div>
+        </div>
+        <div class="flex flex-col justify-center p-6 flex-1 h-full">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 w-full">
+            <div class="flex-1 min-w-0 relative">
+              <div class="absolute top-0 right-0 flex flex-col items-end gap-1 p-2">
+                <ng-container *ngIf="service.stars">
+                  <div class="flex items-center gap-1">
+                    <ng-container *ngFor="let star of [].constructor(service.stars); let i = index">
+                      <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.175 0l-3.385 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118l-3.385-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                    </ng-container>
+                  </div>
+                  <div class="flex items-center gap-1 text-xs text-gray-600 mt-1">
+                    <span>{{ service.rating }}</span>
+                    <span>·</span>
+                    <span>{{ service.reviews }} reviews</span>
+                    <span *ngIf="service.verified" class="ml-1 px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-[10px] font-semibold">Verified</span>
+                  </div>
+                </ng-container>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ service.name }}</h3>
+              <p class="text-gray-600 mb-2">{{ service.description }}</p>
+              <ul class="mb-2 text-gray-700 text-sm list-disc pl-5" *ngIf="service.features">
+                <li *ngFor="let feature of service.features">{{ feature }}</li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mb-2">
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold" *ngIf="service.category">{{ service.category }}</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold" *ngIf="service.tags">{{ service.tags.join(', ') }}</span>
+              </div>
+              <div class="mb-2 text-gray-700 text-sm" *ngIf="service.scope || service.duration || service.team || service.clientType">
+                <span *ngIf="service.scope"><span class="font-semibold">Project Size/Scope:</span> {{ service.scope }}<br></span>
+                <span *ngIf="service.duration"><span class="font-semibold">Estimated Duration:</span> {{ service.duration }}<br></span>
+                <span *ngIf="service.team"><span class="font-semibold">Team/Expertise:</span> {{ service.team }}<br></span>
+                <span *ngIf="service.clientType"><span class="font-semibold">Client Type:</span> {{ service.clientType }}</span>
+              </div>
+              <a [routerLink]="['/services', service.id]" class="text-blue-500 hover:underline text-sm mb-2 inline-block">Service Details</a>
+              <div class="flex flex-col items-end justify-between min-w-[200px] md:w-1/3 md:absolute md:bottom-0 md:right-0 md:static mt-4 md:mt-0">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold" *ngIf="service.discount">{{ service.discount }}</span>
+                </div>
+                <div class="text-blue-600 font-semibold mb-2">
+                  <span *ngIf="service.originalPrice" class="line-through text-gray-400 mr-2">{{ service.originalPrice | currency }}</span>
+                  <span>{{ service.price | currency }}</span>
+                  <span class="text-xs text-gray-500 ml-1">per project</span>
+                </div>
+                <button class="w-full md:w-auto px-6 py-2 bg-blue-500 text-white rounded-md font-semibold shadow hover:bg-blue-600 transition mb-2" (click)="service.viewPricesDropdown = !service.viewPricesDropdown">View Prices</button>
+                <div *ngIf="service.viewPricesDropdown" class="bg-white border border-gray-200 rounded shadow p-2 mt-1 w-full md:w-1/2">
+                  <div *ngFor="let option of service.priceOptions" class="py-1 px-2 hover:bg-blue-50 cursor-pointer" (click)="bookService(service.id)">{{ option }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <ng-template #noServices>
   <p>No featured services available at the moment.</p>

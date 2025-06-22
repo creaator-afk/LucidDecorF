@@ -1,22 +1,41 @@
-<div class="flex flex-col items-center gap-4">
-  <div class="flex justify-between w-full max-w-lg">
-    <input type="text" placeholder="Search for services..." [(ngModel)]="searchQuery" class="p-2 border rounded w-full mr-2"/>
-    <button (click)="onSearch()" class="p-2 bg-blue-500 text-white rounded">Search</button>
+<!-- Search Bar Row Modularized -->
+<div class="flex flex-row items-center justify-center gap-4 w-full max-w-7xl mx-auto mt-8 mb-8">
+  <!-- Destination Dropdown -->
+  <div class="relative w-1/5 flex flex-col items-start">
+    <label class="mb-1 ml-1 text-sm font-semibold text-gray-700">Destination</label>
+    <button class="w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-left focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center justify-between">
+      <span class="text-gray-400">Select destination</span>
+      <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
   </div>
-  <div *ngIf="filteredServices && filteredServices.length; else noResults" class="w-full ">
-    <div class="flex gap-4">
-      <div *ngFor="let service of filteredServices" class="border rounded mb-2 w-1/3">
-        <div class="bg-gray-200 p-2 cursor-pointer" (click)="toggleAccordion(service)">
-          <h3>{{ service.name }}</h3>
-        </div>
-        <div [ngClass]="{'block': service.active, 'hidden': !service.active}" class="p-2">
-          <p>{{ service.description }}</p>
-          <p>Price: {{ service.price | currency }}</p>
-        </div>
-      </div>
-    </div>
+  <!-- Duration Dropdown -->
+  <div class="relative w-1/5 flex flex-col items-start">
+    <label class="mb-1 ml-1 text-sm font-semibold text-gray-700">Duration</label>
+    <button class="w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-left focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center justify-between">
+      <span class="text-gray-400">Select duration</span>
+      <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
   </div>
-  <ng-template #noResults>
-    <p>No services found.</p>
-  </ng-template>
+  <!-- People Dropdown -->
+  <div class="relative w-1/5 flex flex-col items-start">
+    <label class="mb-1 ml-1 text-sm font-semibold text-gray-700">People</label>
+    <button class="w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-left focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center justify-between">
+      <span class="text-gray-400">Select people</span>
+      <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+  </div>
+  <!-- Time Dropdown -->
+  <div class="relative w-1/5 flex flex-col items-start">
+    <label class="mb-1 ml-1 text-sm font-semibold text-gray-700">Time</label>
+    <button class="w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-left focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center justify-between">
+      <span class="text-gray-400">Select time</span>
+      <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+  </div>
+  <!-- Search Button -->
+  <div class="w-1/5 flex flex-col items-start">
+    <label class="mb-1 ml-1 text-sm font-semibold text-gray-700 invisible">Search</label>
+    <button class="w-full px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 transition">Search</button>
+  </div>
 </div>
+

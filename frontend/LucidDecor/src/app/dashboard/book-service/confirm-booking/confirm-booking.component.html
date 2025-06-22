@@ -4,7 +4,7 @@
   <div class="flex flex-col md:flex-row gap-10 items-start">
     <!-- Image left, centered below headline -->
     <div class="flex-shrink-0 w-full md:w-72 flex justify-center items-start">
-      <img [src]="bookingDetails?.service?.image" alt="Image of {{ bookingDetails?.service?.name }}" class="service-image w-full md:w-72 h-56 object-cover rounded-xl border-2 border-blue-100 shadow" />
+      <img [src]="bookingDetails.service.image" alt="Image of {{ bookingDetails.service.name }}" class="service-image w-full md:w-72 h-56 object-cover rounded-xl border-2 border-blue-100 shadow" />
     </div>
     <!-- Info and breakdown right -->
     <div class="flex-1 flex flex-col gap-6">
@@ -12,14 +12,15 @@
       <div>
         <h3 class="text-lg font-semibold text-blue-700 uppercase tracking-wider mb-2">Service Details</h3>
         <div class="flex justify-between text-gray-800 font-bold text-lg mb-1">
-          <span>{{ bookingDetails?.service?.name }}</span>
+          <span>{{ bookingDetails.service.name }}</span>
         </div>
-        <p class="text-gray-600 mb-2">{{ bookingDetails?.service?.description }}</p>
+
+        <p class="text-gray-600 mb-2">{{ bookingDetails.service.description }}</p>
         <div class="flex justify-between text-gray-700 text-sm mb-1">
-          <span>Booking Date:</span> <span>{{ bookingDetails?.date }}</span>
+          <span>Booking Date:</span> <span>{{ bookingDetails.date }}</span>
         </div>
-        <div class="flex justify-between text-gray-700 text-sm mb-1" *ngIf="bookingDetails?.breakdown?.estimatedCompletion">
-          <span>Estimated Completion:</span> <span>{{ bookingDetails?.breakdown?.estimatedCompletion }}</span>
+        <div class="flex justify-between text-gray-700 text-sm mb-1" *ngIf="bookingDetails.breakdown?.estimatedCompletion">
+          <span>Estimated Completion:</span> <span>{{ bookingDetails.breakdown?.estimatedCompletion }}</span>
         </div>
       </div>
       <div class="border-t border-blue-100 my-2"></div>
@@ -29,23 +30,23 @@
         <div class="flex flex-col gap-1">
           <div class="flex justify-between items-center text-gray-700 text-sm">
             <span class="font-medium">Name:</span>
-            <span class="text-right">{{ bookingDetails?.clientName }}</span>
+            <span class="text-right">{{ bookingDetails.clientName }}</span>
           </div>
           <div class="flex justify-between items-center text-gray-700 text-sm">
             <span class="font-medium">Email:</span>
-            <span class="text-right">{{ bookingDetails?.clientEmail }}</span>
+            <span class="text-right">{{ bookingDetails.clientEmail }}</span>
           </div>
-          <div class="flex justify-between items-center text-gray-700 text-sm" *ngIf="bookingDetails?.breakdown?.contactNumber">
+          <div class="flex justify-between items-center text-gray-700 text-sm" *ngIf="bookingDetails.breakdown?.contactNumber">
             <span class="font-medium">Contact Number:</span>
-            <span class="text-right">{{ bookingDetails?.breakdown?.contactNumber }}</span>
+            <span class="text-right">{{ bookingDetails.breakdown?.contactNumber }}</span>
           </div>
           <div class="flex justify-between items-center text-gray-700 text-sm">
             <span class="font-medium">Project Address:</span>
-            <span class="text-right">{{ bookingDetails?.projectAddress }}</span>
+            <span class="text-right">{{ bookingDetails.projectAddress }}</span>
           </div>
           <div class="flex justify-between items-center text-gray-700 text-sm">
             <span class="font-medium">Special Instructions:</span>
-            <span class="text-right">{{ bookingDetails?.instructions }}</span>
+            <span class="text-right">{{ bookingDetails.instructions }}</span>
           </div>
         </div>
       </div>
@@ -56,20 +57,20 @@
         <div class="flex flex-col gap-1">
           <div class="flex justify-between items-center text-blue-700 font-semibold text-base">
             <span>Service Price</span>
-            <span>{{ bookingDetails?.breakdown?.basePrice | currency }}</span>
+            <span>{{ bookingDetails.breakdown?.basePrice | currency }}</span>
           </div>
           <div class="flex justify-between items-center text-gray-500 text-sm">
             <span>Taxes & Fees</span>
-            <span>{{ bookingDetails?.breakdown?.taxes | currency }}</span>
+            <span>{{ bookingDetails.breakdown?.taxes | currency }}</span>
           </div>
-          <div class="flex justify-between items-center text-gray-500 text-sm" *ngIf="bookingDetails?.breakdown?.paymentMethod">
+          <div class="flex justify-between items-center text-gray-500 text-sm" *ngIf="bookingDetails.breakdown?.paymentMethod">
             <span>Payment Method</span>
-            <span>{{ bookingDetails?.breakdown?.paymentMethod }}</span>
+            <span>{{ bookingDetails.breakdown?.paymentMethod }}</span>
           </div>
           <div class="border-t border-blue-100 my-2"></div>
           <div class="flex justify-between items-center text-blue-900 font-bold text-xl">
             <span>Total</span>
-            <span>{{ bookingDetails?.breakdown?.total | currency }}</span>
+            <span>{{ bookingDetails.breakdown?.total | currency }}</span>
           </div>
         </div>
       </div>
