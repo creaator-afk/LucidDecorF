@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "src/main.ts", "use": "@vercel/static-build", "config": { "distDir": "dist/LucidDecor" } }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/LucidDecor" } }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
