@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/lucid-decor" } }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/lucid-decor/browser" } }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/browser/index.html" }
+    { "src": "/(.*)", "dest": "index.html" }
   ]
 }
