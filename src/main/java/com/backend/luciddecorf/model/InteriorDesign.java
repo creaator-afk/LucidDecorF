@@ -1,6 +1,8 @@
-package com.backend.luciddecorf.repositories;
+package com.backend.luciddecorf.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,13 +11,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "interior_services")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class InteriorServiceRepository {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class InteriorDesign extends BaseModel{
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -59,15 +60,6 @@ public abstract class InteriorServiceRepository {
     @Column(name = "maximum_project_size")
     private String maximumProjectSize;
 
-    // Metadata tracking
-    @Column(name = "created_at", updatable = false)
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
     // Enums for categorization
     public enum ServiceCategory {
         RESIDENTIAL_DESIGN,
@@ -90,5 +82,7 @@ public abstract class InteriorServiceRepository {
     }
 
     // Subclass-specific methods can be added here
-    public abstract double calculateFinalPrice();
+    public double calculateFinalPrice() {
+        return 0;
+    }
 }

@@ -1,0 +1,7 @@
+TODO 1: Merge feature/authentication into develop
+TODO 2: Merge feature/service-search into develop
+TODO 3: Merge feature/booking-payment into develop
+TODO 4: Merge feature/database-optimization into develop
+TODO 5: Merge feature/ui-ux into develop
+TODO 6: Merge bugfix into develop
+TODO 7: Merge release/1.0 into main
