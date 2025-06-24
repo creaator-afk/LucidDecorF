@@ -4,6 +4,6 @@
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/lucid-decor" } }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "index.html" }
+    { "src": "/(.*)", "dest": "/browser/index.html" }
   ]
 }
